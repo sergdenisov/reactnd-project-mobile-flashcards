@@ -3,14 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-native-scripts": "1.5.0"
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "react-native-scripts": "1.5.0",
+    "babel-eslint": "^8.0.1",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.7.4"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios"
+    "ios": "react-native-scripts ios",
+    "eslint": "./node_modules/eslint/bin/eslint.js . --fix"
   },
   "dependencies": {
     "expo": "^21.0.0",
