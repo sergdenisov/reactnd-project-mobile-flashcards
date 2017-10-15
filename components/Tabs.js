@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Platform, View } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { purple, white } from '../utils/colors';
+import { black, white, gray } from '../utils/colors';
 
 const DesksTabBarIcon = ({ tintColor }) => (
   <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
@@ -41,17 +41,11 @@ export default TabNavigator(
       header: null,
     },
     tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ? purple : white,
+      activeTintColor: black,
+      inactiveTintColor: Platform.OS === 'ios' ? gray : black,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === 'ios' ? white : purple,
-        shadowColor: 'rgba(0, 0, 0, 0.24)',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowRadius: 6,
-        shadowOpacity: 1,
+        backgroundColor: Platform.OS === 'ios' ? white : white,
       },
     },
   },
