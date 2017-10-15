@@ -1,38 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, View } from 'react-native';
+import { Platform } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { black, white, gray } from '../utils/colors';
+import { black, white, lightGray } from '../utils/colors';
+import Decks from './Decks';
+import NewDeck from './NewDeck';
 
-const DesksTabBarIcon = ({ tintColor }) => (
+const DecksTabBarIcon = ({ tintColor }) => (
   <Ionicons name="ios-bookmarks" size={30} color={tintColor} />
 );
-DesksTabBarIcon.propTypes = {
+DecksTabBarIcon.propTypes = {
   tintColor: PropTypes.string.isRequired,
 };
 
-const NewDeskTabBarIcon = ({ tintColor }) => (
+const NewDeckTabBarIcon = ({ tintColor }) => (
   <FontAwesome name="plus-square" size={30} color={tintColor} />
 );
-NewDeskTabBarIcon.propTypes = {
+NewDeckTabBarIcon.propTypes = {
   tintColor: PropTypes.string.isRequired,
 };
 
 export default TabNavigator(
   {
-    Desks: {
-      screen: () => <View />,
+    Decks: {
+      screen: Decks,
       navigationOptions: {
-        tabBarLabel: 'Desks',
-        tabBarIcon: DesksTabBarIcon,
+        tabBarLabel: 'Decks',
+        tabBarIcon: DecksTabBarIcon,
       },
     },
-    NewDesk: {
-      screen: () => <View />,
+    NewDeck: {
+      screen: NewDeck,
       navigationOptions: {
-        tabBarLabel: 'New desk',
-        tabBarIcon: NewDeskTabBarIcon,
+        tabBarLabel: 'New deck',
+        tabBarIcon: NewDeckTabBarIcon,
       },
     },
   },
@@ -42,10 +44,10 @@ export default TabNavigator(
     },
     tabBarOptions: {
       activeTintColor: black,
-      inactiveTintColor: Platform.OS === 'ios' ? gray : black,
+      inactiveTintColor: Platform.OS === 'ios' ? lightGray : black,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === 'ios' ? white : white,
+        backgroundColor: white,
       },
     },
   },
