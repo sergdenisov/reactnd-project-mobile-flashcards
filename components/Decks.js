@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { StyleSheet, ScrollView, TouchableOpacity, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { gray, lightBlack } from '../utils/colors';
@@ -33,6 +33,9 @@ class Decks extends Component {
     actions: PropTypes.shape({
       getDecks: PropTypes.func.isRequired,
     }).isRequired,
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -40,15 +43,18 @@ class Decks extends Component {
   }
 
   render() {
-    const { decks } = this.props;
+    const { decks, navigation } = this.props;
 
     return (
       <ScrollView>
         {decks.map(deck => (
-          <View key={deck.title} style={styles.deck}>
+          <TouchableOpacity
+            key={deck.title}
+            style={styles.deck}
+            onPress={() => navigation.navigate('Deck', { deck })}>
             <Text style={styles.title}>{deck.title}</Text>
             <Text style={styles.questions}>{deck.questions.length} cards</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     );
