@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
 import { black, lightGray, transparent } from '../utils/colors';
 import { addDeck } from '../actions';
 

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import CustomStatusBar from './components/CustomStatusBar';
-import Tabs from './components/Tabs';
+import Navigator from './components/Navigator';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -18,7 +18,7 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.app}>
         <CustomStatusBar />
-        <Tabs />
+        <Navigator />
       </View>
     </Provider>
   );
