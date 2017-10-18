@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: lightBlack,
   },
-  questions: {
+  cards: {
     alignSelf: 'stretch',
     textAlign: 'center',
     fontSize: 20,
@@ -53,7 +53,7 @@ class Decks extends Component {
             style={styles.deck}
             onPress={() => navigation.navigate('Deck', { deck })}>
             <Text style={styles.title}>{deck.title}</Text>
-            <Text style={styles.questions}>{deck.questions.length} cards</Text>
+            <Text style={styles.cards}>{deck.cards.length} cards</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>

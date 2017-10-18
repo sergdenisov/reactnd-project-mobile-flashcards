@@ -27,9 +27,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const initialState = {
-  title: '',
-};
+const initialState = { title: '' };
 
 class NewDeck extends Component {
   static propTypes = {
@@ -47,7 +45,7 @@ class NewDeck extends Component {
     const { actions, navigation } = this.props;
     const { title } = this.state;
 
-    actions.addDeck({ title, questions: [] });
+    actions.addDeck({ title, cards: [] });
     this.setState(initialState);
     navigation.dispatch(NavigationActions.back({ key: 'NewDeck' }));
   };
