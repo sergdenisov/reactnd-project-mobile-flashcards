@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation';
 import Tabs from './Tabs';
 import { white, black } from '../utils/colors';
 import Deck from './Deck';
+import AddCard from './AddCard';
 
 export default StackNavigator(
   {
@@ -10,6 +11,13 @@ export default StackNavigator(
     },
     Deck: {
       screen: Deck,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: { backgroundColor: black },
+      },
+    },
+    AddCard: {
+      screen: AddCard,
       navigationOptions: {
         headerTintColor: white,
         headerStyle: { backgroundColor: black },

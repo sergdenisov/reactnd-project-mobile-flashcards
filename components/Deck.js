@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: lightBlack,
   },
-  questions: {
+  cards: {
     alignSelf: 'stretch',
     textAlign: 'center',
     fontSize: 25,
@@ -33,15 +33,18 @@ const styles = StyleSheet.create({
 });
 
 const Deck = props => {
-  const { deck } = props;
+  const { deck, navigation } = props;
 
   return (
     <View style={styles.view}>
       <View style={styles.deck}>
         <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.questions}>{deck.questions.length} cards</Text>
+        <Text style={styles.cards}>{deck.cards.length} cards</Text>
       </View>
-      <Button title="Add Card" onPress={() => null} />
+      <Button
+        title="Add Card"
+        onPress={() => navigation.navigate('AddCard', { deck })}
+      />
       <View style={styles.startQuizButton}>
         <Button color={purple} title="Start Quiz" onPress={() => null} />
       </View>
@@ -52,7 +55,10 @@ const Deck = props => {
 Deck.propTypes = {
   deck: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    questions: PropTypes.array.isRequired,
+    cards: PropTypes.array.isRequired,
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
@@ -62,8 +68,9 @@ Deck.navigationOptions = ({ navigation }) => {
   return { title: deck.title };
 };
 
-function mapStateToProps(state, { navigation }) {
-  const { deck } = navigation.state.params;
+function mapStateToProps({ decks }, { navigation }) {
+  const { title } = navigation.state.params.deck;
+  const deck = decks.find(item => item.title === title);
 
   return { deck };
 }
