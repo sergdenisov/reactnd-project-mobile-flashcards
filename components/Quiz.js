@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { lightBlack, red, green, purple } from '../utils/colors';
+import * as api from '../utils/api';
 
 const styles = StyleSheet.create({
   view: {
@@ -59,6 +60,17 @@ class Quiz extends Component {
     this.setState((prevState, props) => {
       const { cards } = props;
       const isOver = prevState.index === cards.length - 1;
+
+      if (isOver) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(9);
+        tomorrow.setMinutes(0);
+
+        api
+          .clearLocalNotification()
+          .then(() => api.setLocalNotification(tomorrow));
+      }
 
       return {
         isOver,
