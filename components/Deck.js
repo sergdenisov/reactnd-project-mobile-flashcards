@@ -27,26 +27,32 @@ const styles = StyleSheet.create({
     color: gray,
     marginTop: 5,
   },
-  startQuizButton: {
-    paddingTop: 10,
+  separatedButton: {
+    marginTop: 10,
   },
 });
 
 const Deck = props => {
   const { deck, navigation } = props;
+  const { cards } = deck;
 
   return (
     <View style={styles.view}>
       <View style={styles.deck}>
         <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.cards}>{deck.cards.length} cards</Text>
+        <Text style={styles.cards}>{cards.length} cards</Text>
       </View>
       <Button
         title="Add Card"
         onPress={() => navigation.navigate('AddCard', { deck })}
       />
-      <View style={styles.startQuizButton}>
-        <Button color={purple} title="Start Quiz" onPress={() => null} />
+      <View style={styles.separatedButton}>
+        <Button
+          color={purple}
+          disabled={!cards.length}
+          title="Start Quiz"
+          onPress={() => navigation.navigate('Quiz', { cards })}
+        />
       </View>
     </View>
   );
